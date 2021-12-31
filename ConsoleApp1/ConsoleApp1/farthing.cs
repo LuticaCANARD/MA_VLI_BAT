@@ -33,7 +33,7 @@ namespace ConsoleApp1
                     }
                     else
                     {
-                        int[] aktp = new int[3] { ws.Cells[readingpoint, 4].Value, ws.Cells[readingpoint, 4].Value, ws.Cells[readingpoint, 4].Value };
+                        double[] aktp = new double[3] { ws.Cells[readingpoint, 4].Value, ws.Cells[readingpoint, 4].Value, ws.Cells[readingpoint, 4].Value };
                         readinglist.Append(new bat_unit(
                             // ID, 공격력[3], 체력, 방어력(방탄복), 숙련도,조직수준, 지원장비(전투),무기이름
                             ws.Cells[readingpoint, 1].Value, aktp, ws.Cells[readingpoint, 5], ws.Cells[readingpoint, 6], ws.Cells[readingpoint, 7], ws.Cells[readingpoint, 8], ws.Cells[readingpoint, 9], ws.Cells[readingpoint, 3]
@@ -45,7 +45,7 @@ namespace ConsoleApp1
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e.Message+"errr");
             }
             finally
             {
@@ -60,16 +60,20 @@ namespace ConsoleApp1
         {
             // mode == 0 > input 불러오기 , ==1 > output불러오기
             var url = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var urlx="";
             if (output == true)
             {
-                string urlx = Path.Combine(url, "outputo.xlsx");
-                return urlx;
+                 urlx = Path.Combine(url, "outputo.xlsx");
+                
             }
             else
             {
-                string urlx = Path.Combine(url, "inputn.xlsx");
-                return urlx;
+                 urlx = Path.Combine(url, "inputn.xlsx");
+               
             };
+            string path_file = new Uri(urlx).LocalPath;
+            Console.WriteLine(path_file);
+            return path_file.ToString();
 
         }
     }

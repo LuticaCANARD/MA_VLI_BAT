@@ -19,4 +19,8 @@
     </COMReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0\inputn.xlsx" />
+  </ItemGroup>
+
 </Project>

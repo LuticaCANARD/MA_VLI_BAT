@@ -13,4 +13,6 @@ Console.WriteLine("Hello, World!");
 bat_unit[] attacker = { };
 bat_unit[] defender = { };
 farthing.readingdata(farthing.get_xl(false),attacker,1);
-farthing.readingdata(farthing.get_xl(false), defender, 2);
+farthing.readingdata(farthing.get_xl(false),defender,2);
+Console.WriteLine(attacker);
+Console.WriteLine(defender);
