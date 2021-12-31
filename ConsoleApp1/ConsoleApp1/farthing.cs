@@ -12,7 +12,7 @@ namespace ConsoleApp1
 {
     internal partial class farthing
     {
-        public static void readingdata(string path, bat_unit[] readinglist, int mode)
+        public static void readingdata(string path, List<bat_unit> readinglist, int mode)
         {//파싱
          // 번호1	  이름2	무기종류3	무장수준4	인원숫자5	방탄복6	숙련도7	조직수준8	분대지원장비(전투)9
             Excel.Application excelApp = null;
@@ -44,7 +44,8 @@ namespace ConsoleApp1
                         int ks8 = (int)ws.Cells[readingpoint, 8].value();
                         string ks9 = ws.Cells[readingpoint, 9].value();
                         int[] ksp = { ks4, ks4, ks4 };
-                        readinglist.Append(new bat_unit(ks1, ksp, ks5, ks6,ks7,ks8,ks9,ks3));
+                        bat_unit appending = new bat_unit(ks1, ksp, ks5, ks6, ks7, ks8, ks9, ks3);
+                        readinglist.Add(appending);
                         readingpoint++;
                     }
 

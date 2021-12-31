@@ -9,8 +9,8 @@ namespace ConsoleApp1
 {
     internal partial class innerbat
     {
-        bat_unit[] attack; bat_unit[] defence;
-        public innerbat(bat_unit[] _attack, bat_unit[] _defence)
+        List<bat_unit> attack; List<bat_unit> defence;
+        public innerbat(List<bat_unit> _attack, List<bat_unit> _defence)
         {
             attack = _attack;
             defence = _defence;
@@ -24,7 +24,7 @@ namespace ConsoleApp1
                 checking = this.defence;
             }
             int[] killingid = { };
-            for (int i = 0; i < checking.Length; i++)
+            for (int i = 0; i < checking.Count; i++)
             {
                 if (checking[i].hp <= 0)
                 {
@@ -47,29 +47,29 @@ namespace ConsoleApp1
                 checking = this.defence;
                 checking_n = this.attack;
             }
-            if (checking_n.Length == 1&& checking.Length==1)
+            if (checking_n.Count == 1&& checking.Count==1)
             {
                 checking_n[0].got_atk(checking[0].atp[phase]);
             }
-            else if (checking_n.Length == 1&& checking.Length != 1)
+            else if (checking_n.Count == 1&& checking.Count != 1)
             {
                 int damagesum = 0;
-                for (int i = 0;i < checking.Length; i++)
+                for (int i = 0;i < checking.Count; i++)
                 {
                    damagesum += checking[i].atp[phase];
                 }
                 checking_n[0].got_atk(damagesum);
             }
-            else if (checking_n.Length != 1 && checking.Length == 1)
+            else if (checking_n.Count != 1 && checking.Count == 1)
             {
                 int[] randompic = { };
                 Random Rand = new Random();
-                for (int i = 0; i < checking_n.Length; i++)
+                for (int i = 0; i < checking_n.Count; i++)
                 {
                     randompic.Append(Rand.Next(100));
                 }
                 int sumofrand = randompic.Sum();
-                for (int i = 0; i < checking_n.Length; i++)
+                for (int i = 0; i < checking_n.Count; i++)
                 {
                     int damageofran = checking[0].atp[phase] * (randompic[i] / sumofrand);
                     checking_n[i].got_atk(damageofran);
