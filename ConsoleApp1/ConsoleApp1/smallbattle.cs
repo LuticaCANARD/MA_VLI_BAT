@@ -38,7 +38,7 @@ namespace ConsoleApp1
             }
             return have_zero;
         }
-        public void fighti(bool defence_check,int phase)
+        public void fighti(bool defence_check, int phase)
         {
             var checking = this.attack; // 공격
             var checking_n = this.defence; // 방어
@@ -47,16 +47,16 @@ namespace ConsoleApp1
                 checking = this.defence;
                 checking_n = this.attack;
             }
-            if (checking_n.Count == 1&& checking.Count==1)
+            if (checking_n.Count == 1 && checking.Count == 1)
             {
                 checking_n[0].got_atk(checking[0].atp[phase]);
             }
-            else if (checking_n.Count == 1&& checking.Count != 1)
+            else if (checking_n.Count == 1 && checking.Count != 1)
             {
                 int damagesum = 0;
-                for (int i = 0;i < checking.Count; i++)
+                for (int i = 0; i < checking.Count; i++)
                 {
-                   damagesum += checking[i].atp[phase];
+                    damagesum += checking[i].atp[phase];
                 }
                 checking_n[0].got_atk(damagesum);
             }
@@ -81,9 +81,32 @@ namespace ConsoleApp1
                 Console.WriteLine("내부 전투 수비측 : " + this.defence);
                 Console.WriteLine("내부 전투 공격측 : " + this.attack);
             }
-
-
+        }
+            
+            public List<int> visuallize(bool defence)
+            {
+            var check = this.attack;
+            if (defence)
+            {
+                check=this.defence;
+            }
+            List<int> list = new List<int>();
+            for(int i = 0;i < check.Count; i++)
+            {
+                list.Add(check[i].ID);
+            }
+            return list;
+            }
+        public void add_attack(bat_unit unit)
+        {
+            this.attack.Add(unit);
+        }
+        public void add_defence(bat_unit unit)
+        {
+            this.defence.Add(unit);
         }
 
     }
-}
+
+    }
+
