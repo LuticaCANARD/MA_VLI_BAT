@@ -15,26 +15,26 @@ namespace ConsoleApp1
             attack = _attack;
             defence = _defence;
         }
-        public int check_zero_count(bool defence_check)
+        public bool check_zero_count(bool defence_check)
         {
-            int have_zero=0;
+            bool have_zero=false;
             var checking = this.attack;
             if (defence_check)
             {
                 checking = this.defence;
             }
-            int[] killingid = { };
+            List<int> killingid = new List<int> { };
             for (int i = 0; i < checking.Count; i++)
             {
                 if (checking[i].hp <= 0)
                 {
-                    have_zero++;
+                    have_zero=true;
                     killingid.Append(i);
                 }
             }
-            for (int j = 0; j < killingid.Length; j++)
+            for (int j = 0; j < killingid.Count; j++)
             {
-                checking[killingid[j]].dead_unit(checking[killingid[j]].ID);
+                checking.RemoveAt(killingid[j]);
             }
             return have_zero;
         }
