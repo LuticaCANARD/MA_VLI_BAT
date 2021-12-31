@@ -15,7 +15,7 @@ namespace ConsoleApp1
             attack = _attack;
             defence = _defence;
         }
-        public int check_zero_and_kill(bool defence_check)
+        public int check_zero_count(bool defence_check)
         {
             int have_zero=0;
             var checking = this.attack;
@@ -62,14 +62,24 @@ namespace ConsoleApp1
             }
             else if (checking_n.Length != 1 && checking.Length == 1)
             {
+                int[] randompic = { };
+                Random Rand = new Random();
                 for (int i = 0; i < checking_n.Length; i++)
                 {
-
+                    randompic.Append(Rand.Next(100));
                 }
+                int sumofrand = randompic.Sum();
+                for (int i = 0; i < checking_n.Length; i++)
+                {
+                    int damageofran = checking[0].atp[phase] * (randompic[i] / sumofrand);
+                    checking_n[i].got_atk(damageofran);
+                };
             }
             else
             {
                 Console.WriteLine("ERROR! , 매칭이 잘못됨. >> 다수vs다수가 진행됨. checking후 dameging과정에서 발생. 201.");
+                Console.WriteLine("내부 전투 수비측 : " + this.defence);
+                Console.WriteLine("내부 전투 공격측 : " + this.attack);
             }
 
 

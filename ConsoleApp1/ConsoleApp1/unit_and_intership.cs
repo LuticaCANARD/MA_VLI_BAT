@@ -16,20 +16,23 @@ namespace ConsoleApp1
         {
             ID = _ID; atp = _atp; hp = _hp; bp = _bp; xp = _xp; cp = _cp; sp = _sp; weap = _weap; dead = false;
         }
+        
         public void got_atk(int damage)
         {
             int sdamage;
-            if (damage - bp <= 0)
+            int ibp;
+            ibp = defencefor.defencefor_f(bp);
+
+            if (damage - ibp <= 0)
                 sdamage = 0;
             else
-                sdamage = damage - bp;
+                sdamage = damage - ibp;
 
             if (this.hp - sdamage <= 0)
             {
                 this.hp = 0;
                 this.dead = true;
             }
-
         }
         public void sync_xp()
         {
