@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System;
+using System.Collections.Generic;
 namespace ConsoleApp1
 {
-    internal class bat_unit
+    internal partial class bat_unit
     {
         public int ID; public int[] atp; public int hp; public int bp; public string xp; public int cp; public int sp; public string weap;
 
@@ -45,6 +46,9 @@ namespace ConsoleApp1
             atp[1] = Convert.ToInt32(atp[1] * sigma);
             atp[2] = Convert.ToInt32(atp[2] * sigma);
         }
-
+        public void dead_unit(int _ID)
+        {
+            ID = _ID; atp ={ }; hp = 0; bp = 0; xp = "사망"; cp = 0; sp = 0; weap = "0";
+        }
     };
 }

@@ -10,7 +10,7 @@ using System.Reflection;
 
 namespace ConsoleApp1
 {
-    internal class phasing
+    internal partial class phasing
     {
         void readingdata(string path, bat_unit[] readinglist, int mode)
         {//파싱
