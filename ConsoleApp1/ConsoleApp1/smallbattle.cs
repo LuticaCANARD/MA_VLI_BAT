@@ -53,7 +53,7 @@ namespace ConsoleApp1
             }
             else if (checking_n.Length == 1&& checking.Length != 1)
             {
-                double damagesum = 0;
+                int damagesum = 0;
                 for (int i = 0;i < checking.Length; i++)
                 {
                    damagesum += checking[i].atp[phase];
@@ -71,7 +71,7 @@ namespace ConsoleApp1
                 int sumofrand = randompic.Sum();
                 for (int i = 0; i < checking_n.Length; i++)
                 {
-                    double damageofran = checking[0].atp[phase] * (randompic[i] / sumofrand);
+                    int damageofran = checking[0].atp[phase] * (randompic[i] / sumofrand);
                     checking_n[i].got_atk(damageofran);
                 };
             }

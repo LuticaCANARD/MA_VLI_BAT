@@ -33,11 +33,18 @@ namespace ConsoleApp1
                     }
                     else
                     {
-                        double[] aktp = new double[3] { ws.Cells[readingpoint, 4].Value, ws.Cells[readingpoint, 4].Value, ws.Cells[readingpoint, 4].Value };
-                        readinglist.Append(new bat_unit(
-                            // ID, 공격력[3], 체력, 방어력(방탄복), 숙련도,조직수준, 지원장비(전투),무기이름
-                            ws.Cells[readingpoint, 1].Value, aktp, ws.Cells[readingpoint, 5], ws.Cells[readingpoint, 6], ws.Cells[readingpoint, 7], ws.Cells[readingpoint, 8], ws.Cells[readingpoint, 9], ws.Cells[readingpoint, 3]
-                            ));
+                        //번호	이름	무기종류	무장수준	인원숫자	방탄복	숙련도	조직수준	분대지원장비(전투)
+                        int ks1 = (int) ws.Cells[readingpoint, 1].value();
+                        string ks2 = ws.Cells[readingpoint, 2].value();
+                        string ks3 = ws.Cells[readingpoint, 3].value();
+                        int ks4 = (int)ws.Cells[readingpoint, 4].value();
+                        int ks5 = (int)ws.Cells[readingpoint, 5].value();
+                        int ks6 = (int)ws.Cells[readingpoint, 6].value();
+                        string ks7 = ws.Cells[readingpoint, 7].value();
+                        int ks8 = (int)ws.Cells[readingpoint, 8].value();
+                        string ks9 = ws.Cells[readingpoint, 9].value();
+                        int[] ksp = { ks4, ks4, ks4 };
+                        readinglist.Append(new bat_unit(ks1, ksp, ks5, ks6,ks7,ks8,ks9,ks3));
                         readingpoint++;
                     }
 

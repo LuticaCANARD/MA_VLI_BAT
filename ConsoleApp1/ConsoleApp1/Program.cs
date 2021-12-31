@@ -14,5 +14,10 @@ bat_unit[] attacker = { };
 bat_unit[] defender = { };
 farthing.readingdata(farthing.get_xl(false),attacker,1);
 farthing.readingdata(farthing.get_xl(false),defender,2);
+for (int i = 0; i < defender.Length; i++)
+{
+    var p = defender[i];
+    Console.WriteLine(i+": id:"+p.ID+"/hp :"+p.hp);
+}
 Console.WriteLine(attacker);
 Console.WriteLine(defender);
