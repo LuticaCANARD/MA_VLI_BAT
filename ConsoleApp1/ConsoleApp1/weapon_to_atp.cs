@@ -22,46 +22,33 @@ namespace ConsoleApp1
             bool def_millitagun = def_weapn == "기관단총" || def_weapn == "자동소총" || def_weapn == "지정사수소총";
 
             bool have_scope = atk_scope != "없음";
+            int[] make_via(int min_damage, int max_damage,int order)
+            {
+                Random r = new Random();
+                int delta = max_damage - min_damage;
+                int damage = r.Next(delta) + min_damage;
+                int[] via = { 0, 0, 0 };
+                for (int i = 2;i >= order; i--)
+                    via[i] = damage;
+                return via;
+            }
             if (atk_nearwep & def_nearwep)
             {
                 if(atk_weapn== "야구배트"& def_weapn == "식칼")
                 {
-                    Random r = new Random();
-                    int min_damage = 15;
-                    int max_damage = 25;
-                    int delta = max_damage - min_damage;
-                    int damage = r.Next(delta) + min_damage;
-                    int[] via = { 0, damage, damage };
-                    return via;
+                    return make_via(15,25,1);
                 }
                 else if ( atk_weapn =="창"& def_weapn != "창")
                 {
-                    Random r = new Random();
-                    int min_damage = 15;
-                    int max_damage = 25;
-                    int delta = max_damage - min_damage;
-                    int damage = r.Next(delta) + min_damage;
-                    int[] via = { 0, damage, damage };
-                    return via;
-                }else if(atk_weapn == "식칼")
+                    return make_via(15, 25,1);
+                }
+                else if(atk_weapn == "식칼")
                 {
-                    Random r = new Random();
-                    int min_damage = 5;
-                    int max_damage = 10;
-                    int delta = max_damage - min_damage;
-                    int damage = r.Next(delta) + min_damage;
-                    int[] via = { 0, 0, damage };
-                    return via;
+                    return make_via(5,10,2);
                 }
                 else
                 {
-                    Random r = new Random();
-                    int min_damage = 15;
-                    int max_damage = 25;
-                    int delta = max_damage - min_damage;
-                    int damage = r.Next(delta) + min_damage;
-                    int[] via = { 0, 0, damage };
-                    return via;
+                    return make_via(15,25,2);
                 }
 
             }
