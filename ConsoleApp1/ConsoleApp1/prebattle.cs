@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-
-    internal partial class Zero_check
+    internal class prebattle
     {
+        public void prebattle_cast (List<bat_unit> atk, List<bat_unit> def)
+        {
+
+        }
     }
 }

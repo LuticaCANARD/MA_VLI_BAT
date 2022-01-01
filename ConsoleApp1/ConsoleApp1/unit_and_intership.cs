@@ -55,6 +55,11 @@ namespace ConsoleApp1
             int[] deadki = new int[3] { 0, 0, 0 };
             ID = _ID; atp = deadki; hp = 0; bp = 0; xp = "사망"; cp = 0; sp = ""; weap = "0";dead = true;
         }
-       
+
+        public void change_atp(int[] atk)
+        {
+            this.atp = atk;
+        }
+
     };
 }
