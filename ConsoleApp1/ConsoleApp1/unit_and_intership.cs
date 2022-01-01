@@ -27,12 +27,14 @@ namespace ConsoleApp1
                 sdamage = 0;
             else
                 sdamage = damage - ibp;
+            this.hp = this.hp - sdamage;
 
-            if (this.hp - sdamage <= 0)
+            if (this.hp <= 0)
             {
                 this.hp = 0;
                 this.dead = true;
             }
+            
         }
         public void sync_xp()
         {

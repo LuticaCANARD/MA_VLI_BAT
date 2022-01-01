@@ -9,7 +9,7 @@ namespace ConsoleApp1
 {
     internal partial class innerbat
     {
-        List<bat_unit> attack; List<bat_unit> defence;
+        public List<bat_unit> attack; public List<bat_unit> defence;
         public innerbat(List<bat_unit> _attack, List<bat_unit> _defence)
         {
             attack = _attack;
@@ -17,7 +17,7 @@ namespace ConsoleApp1
         }
         public bool check_zero_count(bool defence_check)
         {
-            bool have_zero=false;
+            bool have_zero = false;
             var checking = this.attack;
             if (defence_check)
             {
@@ -28,7 +28,7 @@ namespace ConsoleApp1
             {
                 if (checking[i].hp <= 0)
                 {
-                    have_zero=true;
+                    have_zero = true;
                     killingid.Append(i);
                 }
             }
@@ -82,31 +82,35 @@ namespace ConsoleApp1
                 Console.WriteLine("내부 전투 공격측 : " + this.attack);
             }
         }
-            
-            public List<int> visuallize(bool defence)
-            {
+
+        public List<int> visuallize(bool defence)
+        {
             var check = this.attack;
             if (defence)
             {
-                check=this.defence;
+                check = this.defence;
             }
             List<int> list = new List<int>();
-            for(int i = 0;i < check.Count; i++)
+            for (int i = 0; i < check.Count; i++)
             {
                 list.Add(check[i].ID);
             }
             return list;
-            }
+        }
         public void add_attack(bat_unit unit)
         {
             this.attack.Add(unit);
         }
+
         public void add_defence(bat_unit unit)
         {
             this.defence.Add(unit);
         }
-
     }
+} 
+         
 
-    }
+    
+
+    
 

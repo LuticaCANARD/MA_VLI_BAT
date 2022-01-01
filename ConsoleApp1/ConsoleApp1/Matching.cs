@@ -47,7 +47,7 @@ namespace ConsoleApp1
                     Biglist = R_attacker;
                 }
 
-
+                //문제 x
 
                 List<List< List < bat_unit> >> logicga = new List<List<List<bat_unit>>> ();
                 for (int i = 0; i < Smallc; i++)
@@ -65,7 +65,7 @@ namespace ConsoleApp1
                 int bigkoc = 0;
                 if (defender.Count > attacker.Count)
                     bigkoc = 1;
-
+                //여기 문제
                 for (int i= 0; i < Biglist.Count; i++)
                 {
                     Random r = new Random();
