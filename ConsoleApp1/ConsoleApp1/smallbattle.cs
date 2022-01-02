@@ -19,7 +19,7 @@ namespace ConsoleApp1
         {
             bool have_zero = false;
             var checking = this.attack;
-            if (defence_check)
+            if (defence_check==true)
             {
                 checking = this.defence;
             }
@@ -29,13 +29,19 @@ namespace ConsoleApp1
                 if (checking[i].hp <= 0)
                 {
                     have_zero = true;
-                    killingid.Append(i);
+                    killingid.Add(i);
                 }
             }
-            for (int j = 0; j < killingid.Count; j++)
+            while (! (killingid.Count== 0))
             {
-                checking.RemoveAt(killingid[j]);
+                checking.RemoveAt(killingid[0]);
+                killingid.RemoveAt(0);
+                for (int i = killingid.Count-1; i >= 0; i--)
+                {
+                    killingid[i] = killingid[i] - 1;
+                }
             }
+
             return have_zero;
         }
         public void fighti(bool defence_check, int phase)
@@ -62,17 +68,19 @@ namespace ConsoleApp1
             }
             else if (checking_n.Count != 1 && checking.Count == 1)
             {
-                int[] randompic = { };
+                List<int> randompic = new List<int> { };
                 Random Rand = new Random();
                 for (int i = 0; i < checking_n.Count; i++)
                 {
-                    randompic.Append(Rand.Next(100));
+                    randompic.Add(Rand.Next(100));
                 }
                 int sumofrand = randompic.Sum();
                 for (int i = 0; i < checking_n.Count; i++)
                 {
-                    int damageofran = checking[0].atp[phase] * (randompic[i] / sumofrand);
-                    checking_n[i].got_atk(damageofran);
+                    int damageofran = checking[0].atp[phase];
+                    double mize = ((double)randompic[i] / (double)sumofrand);
+                    int damaz = Convert.ToInt32(damageofran * mize);
+                    checking_n[i].got_atk(damaz);
                 };
             }
             else
@@ -106,8 +114,58 @@ namespace ConsoleApp1
         {
             this.defence.Add(unit);
         }
+        public static List<innerbat> fightingk (List<innerbat>allbat,bool defmode,int pha) 
+        {
+            for (int i = 0; i < allbat.Count; i++)
+            {
+                allbat[i].fighti(defmode, pha);
+            }
+            bool shape = false;
+            bool stoping = true;
+            for (int i = 0; i < allbat.Count; i++)
+            {
+
+                shape = allbat[i].check_zero_count(!defmode);
+            }
+            if (shape)
+            { // 완전 사멸된 경우
+                for (int i = 0; i < allbat.Count; i++)
+                {
+                    if (allbat[i].defence.Count >= 0)
+                    {
+                        stoping = false;
+                    }
+                }
+                prebattle.prebat_remat(allbat, defmode);
+                Console.WriteLine("완전사멸 o");
+            }
+            return allbat;
+
+        }
+        public static bool alldied(List<innerbat> allbat,bool defence_che)
+        {
+            // 다 죽으면 true
+            bool die = false;
+            for (int i = 0;i < allbat.Count; i++)
+            {
+                var che = allbat[i].attack;
+                if (defence_che)
+                {
+                    che = allbat[i].defence;
+                }
+                if(che.Count > 0)
+                {
+                    die = true;
+                }
+                
+
+            }
+            die = !die;
+            return die;
+        }
+        }
     }
-} 
+
          
 
     
