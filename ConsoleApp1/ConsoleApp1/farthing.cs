@@ -97,6 +97,19 @@ namespace ConsoleApp1
                     wb = excelApp.Workbooks.Open(path);
                     ws = wb.Worksheets.get_Item(1);
                     int writp = 2;
+                    while (!(Convert.ToString(ws.Cells[writp, 1].Value()) =="")&& writp <= 200)
+                    {
+                        ws.Cells[writp, 1] = "";
+                        ws.Cells[writp, 2] = "";
+                        ws.Cells[writp, 3] = "";
+                        ws.Cells[writp, 4] = "";
+                        ws.Cells[writp, 5] = "";
+                        ws.Cells[writp, 6] = "";
+                        ws.Cells[writp, 7] = "";
+                        ws.Cells[writp, 8] = "";
+                        writp++;
+                    }
+                    writp = 2;
                     for (int i = 0; i < allbat.Count; i++)
                     {
                         for(int j = 0; j < allbat[i].attack.Count; j++)
@@ -113,8 +126,22 @@ namespace ConsoleApp1
                         }
                         
                     }
+
                     writp = 2;
                     ws = wb.Worksheets.get_Item(2);
+                    while (!(Convert.ToString(ws.Cells[writp, 1].Value()) == "")&&writp<=200)
+                    {
+                        ws.Cells[writp, 1] = "";
+                        ws.Cells[writp, 2] = "";
+                        ws.Cells[writp, 3] = "";
+                        ws.Cells[writp, 4] = "";
+                        ws.Cells[writp, 5] = "";
+                        ws.Cells[writp, 6] = "";
+                        ws.Cells[writp, 7] = "";
+                        ws.Cells[writp, 8] = "";
+                        writp++;
+                    }
+                    writp = 2;
                     for (int i = 0; i < allbat.Count; i++)
                     {
                         for (int j = 0; j < allbat[i].defence.Count; j++)
