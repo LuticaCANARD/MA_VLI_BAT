@@ -62,6 +62,24 @@ namespace ConsoleApp1
         {
             this.atp = atk;
         }
+        public void change_atp_str(bat_unit anemi)
+        {
+            this.atp = weapon_to_atp.String_to_ATP(this.weap,anemi.weap,this.sp);
+        }
+        public void change_atp_str_long(List<bat_unit> anemi)
+        {
+            int rank = 0;
+            for (int i = 0; i < anemi.Count; i++)
+            {
+                rank = weapon_to_atp.ranking_wep(anemi[i].weap);
+            }
+            string best_wep = weapon_to_atp.inverse_rank(rank);
+            this.atp = weapon_to_atp.String_to_ATP(this.weap, best_wep, this.sp);
+        }
+        public void change_atp_by_an_cp(int cp)
+        {
+            
+        }
 
     };
 }

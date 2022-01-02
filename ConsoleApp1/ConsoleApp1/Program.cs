@@ -95,7 +95,6 @@ for (int i = 0; i < allbattle.Count; i++)
 
     }
 }
-
 for (int i = 0; i < allbattle.Count; i++)
 {
     if (allbattle[i].defence.Count == 1 & allbattle[i].attack.Count == 1)
@@ -152,24 +151,49 @@ for (int i = 0; i< allbattle[0].defence.Count; i++)
 //스텟 확정 체크
 
 //장거리 전투
-for (int i = 0; i < allbattle.Count; i++)
+
+allbattle = innerbat.fightingk(allbattle, false,0);
+Console.WriteLine("장거리 전반전");
+bool die1 = false;
+die1 = innerbat.alldied(allbattle, false);
+// 장거리 선후공 경계 
+if (!die1)
 {
-    allbattle[i].fighti(false, 0);
+    allbattle = innerbat.fightingk(allbattle, true,0);
+    Console.WriteLine("장거리 후반전");
 }
-for (int i = 0;i < allbattle[0].defence.Count; i++)
-{
-    Console.WriteLine("테스트 전투(피해후) 후공 ID : " + allbattle[0].defence[i].ID + "/무기종류 :" + allbattle[0].defence[i].weap +"/hp :"+ allbattle[0].defence[i].hp+
-    "/전투력(장) :" + allbattle[0].defence[i].atp[0] + "/전투력(중) :" + allbattle[0].defence[i].atp[1] + "/전투력(단) :" + allbattle[0].defence[i].atp[2]);
-}
+bool die2 = false;
+die2 = innerbat.alldied(allbattle, true) || die1;
 
 //장거리 전투 체크
 //중거리 전투
-
+if (!die2)
+{
+    allbattle = innerbat.fightingk(allbattle, false, 1);
+    Console.WriteLine("중거리 전반전");
+}
+bool dei3 = innerbat.alldied(allbattle, false) || die2;
+if (!dei3)
+{
+    allbattle = innerbat.fightingk(allbattle, true, 1);
+    Console.WriteLine("중거리 후반전");
+}
+bool dei2 = innerbat.alldied(allbattle, true) || dei3;
 //중거리 전투 체크
 //단거리 전투
-
+if (!dei2)
+{
+    allbattle = innerbat.fightingk(allbattle, false, 2);
+    Console.WriteLine("단거리 전반전");
+}
+bool dei1 = innerbat.alldied(allbattle, false) || dei2;
+if (!dei1)
+{
+    allbattle = innerbat.fightingk(allbattle, true, 1);
+    Console.WriteLine("단거리 후반전");
+}
 //단거리 전투 체크
 //결과 파싱
-
+Console.WriteLine("결과파싱 도달");
 //결과 파싱 체크
 Console.WriteLine(" test end ");

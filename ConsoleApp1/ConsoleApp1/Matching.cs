@@ -13,17 +13,17 @@ namespace ConsoleApp1
         {
             List<innerbat> output = new List<innerbat> { };
             int counter_a = attacker.Count;
-            int counter_b = defender.Count;
+            int counter_d = defender.Count;
             List<bat_unit> R_attacker =Randomize(attacker);
             List<bat_unit> R_defender = Randomize(defender);
             int Bigc = counter_a;
-            int Smallc = counter_b;
-            if(counter_a< counter_b)
+            int Smallc = counter_d;
+            if(counter_a<= counter_d)
             {
-                Bigc = counter_b;
+                Bigc = counter_d;
                 Smallc = counter_a;
             }
-            if (counter_a == counter_b)
+            if (counter_a == counter_d)
             {
                 for (int i = 0; i < R_attacker.Count; i++)
                 {
@@ -38,7 +38,7 @@ namespace ConsoleApp1
             {
 
                 List<bat_unit> Biglist= new List<bat_unit>();
-                if(counter_a < counter_b)
+                if(counter_a < counter_d)
                 {
                     Biglist = R_defender;
                 }
@@ -63,8 +63,10 @@ namespace ConsoleApp1
                 Biglist.RemoveRange(0, Smallc);
 
                 int bigkoc = 0;
-                if (defender.Count > attacker.Count)
+                if (counter_d > counter_a)
+                {
                     bigkoc = 1;
+                }
                 //여기 문제
                 for (int i= 0; i < Biglist.Count; i++)
                 {
