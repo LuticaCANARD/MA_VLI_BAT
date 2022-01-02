@@ -146,6 +146,7 @@ namespace ConsoleApp1
         {
             // 다 죽으면 true
             bool die = false;
+            
             for (int i = 0;i < allbat.Count; i++)
             {
                 var che = allbat[i].attack;

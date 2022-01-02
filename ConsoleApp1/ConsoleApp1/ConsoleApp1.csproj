@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <None Include="bin\Debug\net6.0\inputn.xlsx" />
+    <None Include="bin\Debug\net6.0\outputo.xlsx" />
     <None Include="bin\Debug\net6.0\rule.xlsx" />
   </ItemGroup>
 

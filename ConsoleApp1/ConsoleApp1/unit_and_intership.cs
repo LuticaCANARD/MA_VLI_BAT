@@ -9,12 +9,12 @@ namespace ConsoleApp1
 {
     internal partial class bat_unit
     {
-        public int ID; public int[] atp; public int hp; public int bp; public string xp; public int cp; public string sp; public string weap; bool dead;
+        public int ID; public int[] atp; public int hp; public int bp; public string xp; public int cp; public string sp; public string weap; bool dead;string name;
 
-        public bat_unit(int _ID, int[] _atp, int _hp, int _bp, string _xp, int _cp, string _sp, string _weap)
+        public bat_unit(int _ID, int[] _atp, int _hp, int _bp, string _xp, int _cp, string _sp, string _weap, string name_)
         // ID, 공격력[3], 체력, 방어력(방탄복), 숙련도,조직수준, 지원장비(전투),무기이름
         {
-            ID = _ID; atp = _atp; hp = _hp; bp = _bp; xp = _xp; cp = _cp; sp = _sp; weap = _weap; dead = false;
+            ID = _ID; atp = _atp; hp = _hp; bp = _bp; xp = _xp; cp = _cp; sp = _sp; weap = _weap; dead = false; name = name_; 
         }
         
         public void got_atk(int damage)

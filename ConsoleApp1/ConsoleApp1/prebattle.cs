@@ -35,12 +35,42 @@ namespace ConsoleApp1
                     i--;
                 }
             };
-            for (int i = 0; i < R_x8.Count; i++)
-            {
-                Random r = new Random();
-                int rdx = r.Next(0, allbattle.Count);
-                if (defencemode) { allbattle[rdx].add_defence(R_x8[i]); } 
-                else { allbattle[rdx].add_attack(R_x8[i]); }
+            if(R_x8.Count != 0) {
+                Random rar = new Random();
+                for (int i = 0; i < R_x8.Count; i++)
+                {
+
+                    int rdx = rar.Next(0, allbattle.Count);
+                    if (allbattle.Count == 0)
+                    {
+
+                        List<bat_unit> atk = new List<bat_unit>();
+                        List<bat_unit> def = new List<bat_unit>();
+                        innerbat innerbatsk = new innerbat(atk, def);
+                        if (defencemode == true)
+                        {
+                            innerbatsk = new innerbat(atk, R_x8);
+                        }
+                        else
+                        {
+                            innerbatsk = new innerbat(R_x8, atk);
+                        }
+                        allbattle.Add(innerbatsk);
+                    }
+                    if (defencemode)
+                    {
+                        allbattle[rdx].add_defence(R_x8[i]);
+                        R_x8.RemoveAt(i);
+
+                    }
+                    else
+                    {
+                        allbattle[rdx].add_attack(R_x8[i]);
+                        R_x8.RemoveAt(i);
+
+                    }
+                    
+                }
                
             }
             //넣어보고 allbat에서 다대다 상황에서 분개
