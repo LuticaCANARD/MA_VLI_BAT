@@ -84,10 +84,31 @@ namespace ConsoleApp1
                 };
             }
             else
-            {
-                Console.WriteLine("ERROR! , 매칭이 잘못됨. >> 다수vs다수가 진행됨. checking후 dameging과정에서 발생. 201.");
-                Console.WriteLine("내부 전투 수비측 : " + this.defence);
-                Console.WriteLine("내부 전투 공격측 : " + this.attack);
+            {if(checking_n.Count == 0|| checking.Count == 0)
+                {
+
+                }
+                else { 
+                int damasum = 0;
+                for (int i = 0;i < checking.Count; i++)
+                {
+                    damasum += checking[i].atp[phase];
+                }
+                List<int> randompic = new List<int> { };
+                Random Rand = new Random();
+                for (int i = 0; i < checking_n.Count; i++)
+                {
+                    randompic.Add(Rand.Next(100));
+                }
+                int sumofrand = randompic.Sum();
+                    for (int i = 0; i < checking_n.Count; i++)
+                    {
+                        int damageofran = checking[0].atp[phase];
+                        double mize = ((double)randompic[i] / (double)sumofrand);
+                        int damaz = Convert.ToInt32(damageofran * mize);
+                        checking_n[i].got_atk(damaz);
+                    }
+                };
             }
         }
 

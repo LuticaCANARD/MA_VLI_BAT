@@ -8,22 +8,22 @@ namespace ConsoleApp1
 {
     internal partial class defencefor
     {
-        public static int defencefor_f(int bp)
+        public static int defencefor_f(string bp)
         {
             int ibp = 0;
-            if (bp == 1)
+            if (bp == "NIJ II")
             {
                 ibp = 150;
             }
-            else if (bp == 2)
+            else if (bp == "NIJ IIIA")
             {
                 ibp = 300;
             }
-            else if (bp == 3)
+            else if (bp == "NIJ III")
             {
                 ibp = 500;
             }
-            else if (bp == 4)
+            else if (bp == "NIJ IV")
             {
                 ibp = 800;
             }

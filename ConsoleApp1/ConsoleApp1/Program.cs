@@ -149,7 +149,12 @@ for (int i = 0; i< allbattle[0].defence.Count; i++)
 }
 
 //스텟 확정 체크
-
+Console.WriteLine("정찰 다이스는? : (10 이상일시 공격측 1회 원거리 진행) ");
+int scout = Convert.ToInt32(Console.ReadLine());
+if (scout >= 10)
+{
+    allbattle = innerbat.fightingk(allbattle, false, 0);
+}
 //장거리 전투
 
 allbattle = innerbat.fightingk(allbattle, false,0);
@@ -195,5 +200,6 @@ if (!dei1)
 //단거리 전투 체크
 //결과 파싱
 Console.WriteLine("결과파싱 도달");
+farthing.outbounddata(allbattle, farthing.get_xl(true));
 //결과 파싱 체크
 Console.WriteLine(" test end ");
